@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+packages.microsoft.gpg
+
 # C extensions
 *.so
 

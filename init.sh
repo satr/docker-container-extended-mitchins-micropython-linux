@@ -1,5 +1,5 @@
 apt-get update && apt upgrade
-apt-get install net-tools ssh wget mc curl -y
+apt-get install net-tools ssh wget mc curl git -y
 echo "service ssh start" >> ~/.bashrc
 mkdir /root/tmp && cd /root/tmp
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
