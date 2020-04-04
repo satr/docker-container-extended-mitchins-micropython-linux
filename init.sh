@@ -1,5 +1,6 @@
 apt-get update && apt upgrade
-apt-get install net-tools ssh wget mc curl git -y
+apt-get install sudo net-tools ssh wget mc curl git python3-pip screen -y
+pip3 install esptool rshell
 echo "service ssh start" >> ~/.bashrc
 mkdir /root/tmp && cd /root/tmp
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
@@ -9,5 +10,5 @@ apt-get install apt-transport-https -y
 apt-get update -y
 apt-get install code -y
 rm -ri /root/tmp
-adduser --disabled-password --gecos "" user1 && usermod -aG sudo user1
+adduser --disabled-password --gecos "" user1 && usermod -a -G sudo user1
 ifconfig
