@@ -14,37 +14,49 @@ Installs in addition:
 
 ## How To
 * Install [Docker](https://www.docker.com/products/docker-desktop)
-* Get docker files
-```
-git clone https://github.com/satr/docker-container-extended-mitchins-micropython-linux.git
-```
-* Open the folder _docker-container-extended-mitchins-micropython-linux_ in the terminal
-* Build the Docker image
-`docker build .`
-* Take the provided image-id and run an image with it
-  ```
-  docker run -it --name <IMAGE-NAME> --device=<PORT> <IMAGE-ID> bash
-  ```
+* Build image
+  1. Option: 
+     * Get docker files
+       ```
+       git clone https://github.com/satr/docker-container-extended-mitchins-micropython-linux.git
+       ```
+     * Open the folder _docker-container-extended-mitchins-micropython-linux_ in the terminal
+     * Build the Docker image (`-t` specified tag-name - put your own if needed)
+       
+       `docker build -t satr/micropython .`
+  2. Option:
+     * Build the Docker image from GItHub repository (`-t` specified tag-name - put your own if needed)
+       
+       `docker build -t satr/micropython https://github.com/satr/docker-container-extended-mitchins-micropython-linux.git`
+  * Take the provided image-id and run an image with it
+    ```
+    docker run -it --name <IMAGE-NAME> --device=<PORT> <IMAGE-ID> bash
+    ```
   * (Optional) `<IMAGE-NAME>` - name of the image
   * (Optional) `<PORT>` - serial port of connected board - this port will be available within container. NB: on MacOS this does not work (some articles describe workarounds)!
 * Get a list of running containers
-`docker ps`
+
+  `docker ps`
   * Or get a list of all containers, including those, which where exited from (check the coliumn `STATUS`)
-  `docker ps -a`
+    
+    `docker ps -a`
 * Start the container, if it is stopped
-```
-docker start -a <CONTAINER-ID>
-```
+  ```
+  docker start -a <CONTAINER-ID>
+  ```
   * (Optional) `-a` (or `--attach`) - instanly attach to the container
   * `<CONTAINER-ID>` - container-id (or just container-id's few first characters) show with the command `docker ps -a`
 * SSH to the started container
- `ssh user1@<CONTAINER-IP-ADDRESS>`
-   * `<CONTAINER-IP-ADDRESS>` - IP address of the container, shown after its build, by `ifconfig` command, started within the container, or from the field "Networks"/"IPAddress", show by the command `docker inspect <CONTAINER-ID>`
+  
+  `ssh user1@<CONTAINER-IP-ADDRESS>`
+   * `<CONTAINER-IP-ADDRESS>` - IP address of the container, shown after its build, by `ifconfig` command, started within the container, or from the field "Networks"/"IPAddress", show by the command 
+   
+   `docker inspect <CONTAINER-ID>`
 * Connect to the environment with VSCode via SSH
   * Start VSCode on the host machine
   * Install VSCode extensions
     * `Remote - SSH` by Microsoft
-    * `Remote Develpment` by Microsoft
+    * `Remote Development` by Microsoft
     * (Optional) `Remote - Containers` by Microsoft
     * (Optional) `Remote SSH: Editing Configuration` by Microsoft
     * (Optional) `Docker` by Microsoft
